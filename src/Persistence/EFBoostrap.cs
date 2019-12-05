@@ -34,6 +34,7 @@ namespace Persistence
             {
                 DataContext context = scope.ServiceProvider.GetService<DataContext>();
                 context.Database.Migrate();
+                Seed.SeedData(context);
             }
         }
     }
