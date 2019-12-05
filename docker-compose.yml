@@ -2,7 +2,11 @@ version: '3.4'
 
 services:
   api:
-    image: ${DOCKER_REGISTRY-}api
+    image: backend.api
     build:
-      context: .
-      dockerfile: src/API/Dockerfile
+      context: ./src/API
+      dockerfile: Dockerfile
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    
