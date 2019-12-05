@@ -6,9 +6,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["src/API/API.csproj", "src/API/"]
-COPY ["src/Application/Application.csproj", "src/Application/"]
-COPY ["src/Domain/Domain.csproj", "src/Domain/"]
-COPY ["src/Persistence/Persistence.csproj", "src/Persistence/"]
 RUN dotnet restore "src/API/API.csproj"
 COPY . .
 WORKDIR "/src/src/API"
