@@ -33,5 +33,24 @@ namespace API.Controllers
             return await _mediator.Send(new Application.Activities.GetActivity.Query {Id = id});
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Unit>> CreateActivity(Application.Activities.CreateActivity.Command command)
+        {
+            return await _mediator.Send(command);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Unit>> EditActivity(Guid id, Application.Activities.EditActivity.Command command)
+        {
+            command.Id = id;
+            return await _mediator.Send(command);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Unit>> DeleteActivity(Guid id)
+        {
+            return await _mediator.Send(new Application.Activities.DeleteActivity.Command {Id = id});
+        }
+
     }
 }
